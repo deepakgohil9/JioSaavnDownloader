@@ -10,6 +10,7 @@ const app = express()
 // middlewares
 app.use(cors())
 app.use(express.json())
+app.get('/', (req, res) => { res.send({ message: 'All systems operational! 🚀' }) })
 app.use('/song', song_route)
 
 app.use((req, res) => res.status(404).send({ message: 'requested endpoint not found' }))
