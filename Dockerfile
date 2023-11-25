@@ -1,5 +1,8 @@
 FROM node:lts-bookworm-slim
 
+# Install curl
+RUN apt update && apt install -y curl
+
 # Create app directory
 WORKDIR /usr/src/app
 
