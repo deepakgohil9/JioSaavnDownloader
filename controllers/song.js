@@ -13,7 +13,8 @@ const get_info = async (req, res, next) => {
 
 const get_search_info = async (req, res, next) => {
 	try {
-		const n = req.query.n || 10
+		// const n = req.query.n || 10 		// disabled because make server in blocklist
+		const n = 10
 		if (req.query.q == undefined || req.query.q == '') {
 			res.status(400).send({ message: 'Query param "q" is required and should not be an empty string!' })
 			return
