@@ -13,7 +13,13 @@ const get_info = async (req, res, next) => {
 
 const get_search_info = async (req, res, next) => {
 	try {
-		const tokens = await song_search(req.query.q)
+		const n = req.query.n || 10
+		if (req.query.q == undefined || req.query.q == '') {
+			res.status(400).send({ message: 'Query param "q" is required and should not be an empty string!' })
+			return
+		}
+
+		const tokens = await song_search(req.query.q, n)
 		const data = await Promise.all(tokens.map((token) => {
 			return get_song_info(token)
 		}))
